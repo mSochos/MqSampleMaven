@@ -23,7 +23,6 @@ public class MqClientApp {
     MQQueue outputQueue;
 
     public static void main(String[] args) throws MQException, IOException {
-        System.out.println("a");
         MqClientApp mqClientApp = new MqClientApp();
 
         mqClientApp.init();
@@ -42,10 +41,10 @@ public class MqClientApp {
         MQEnvironment.properties.put(MQConstants.TRANSPORT_PROPERTY, MQConstants.TRANSPORT_MQSERIES_CLIENT);
         MQQueueManager mqQueueManager = new MQQueueManager(qManager);
 
-        MQQueue inputQueue = mqQueueManager.accessQueue(inputQName, MQConstants.MQOO_INQUIRE + MQConstants.MQOO_FAIL_IF_QUIESCING + MQConstants.MQOO_INPUT_SHARED);
+        inputQueue = mqQueueManager.accessQueue(inputQName, MQConstants.MQOO_INQUIRE + MQConstants.MQOO_FAIL_IF_QUIESCING + MQConstants.MQOO_INPUT_SHARED);
         System.out.println("Connected to input queue successful");
 
-        MQQueue outputQueue = mqQueueManager.accessQueue(outputQName, MQConstants.MQOO_OUTPUT);
+        outputQueue = mqQueueManager.accessQueue(outputQName, MQConstants.MQOO_OUTPUT);
         System.out.println("Connected to output queue successful");
     }
 
@@ -55,14 +54,13 @@ public class MqClientApp {
         MQGetMessageOptions getOptions = new MQGetMessageOptions();
         getOptions.options = MQConstants.MQGMO_NO_WAIT + MQConstants.MQGMO_FAIL_IF_QUIESCING + MQConstants.MQGMO_CONVERT;
 
-        MQMessage message = new MQMessage();
         System.out.println("Current queue depth: "+inputQueue.getCurrentDepth());
-        inputQueue.get(message, getOptions);
+        inputQueue.get(inputMessage, getOptions);
         System.out.println("Message consumed");
         byte[] byteText = new byte[inputMessage.getMessageLength()];
         inputMessage.readFully(byteText);
-
-        System.out.println("Message polled from queue: "+new String(byteText));
+        String data = new String(byteText);
+        System.out.println("Message polled from queue: "+data);
         System.out.println("Queue depth after reading message: "+inputQueue.getCurrentDepth());
     }
 
