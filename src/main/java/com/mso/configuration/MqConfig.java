@@ -1,13 +1,7 @@
 package com.mso.configuration;
 
-import com.ibm.mq.MQEnvironment;
-import com.ibm.mq.MQException;
-import com.ibm.mq.MQQueueManager;
-import com.ibm.mq.constants.MQConstants;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
-
-import java.io.IOException;
 
 @Configuration
 public class MqConfig {
