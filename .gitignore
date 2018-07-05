@@ -3,4 +3,4 @@
 /logs
 /target
 *.iml
-application.properties
+src/main/resources/application.properties
