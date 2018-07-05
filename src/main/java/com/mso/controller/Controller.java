@@ -1,6 +1,8 @@
-package com.maersk.mso139;
+package com.mso.controller;
 
 import com.ibm.mq.MQException;
+import com.mso.service.MqClient;
+import com.mso.configuration.MqConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

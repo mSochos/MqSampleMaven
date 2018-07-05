@@ -1,7 +1,8 @@
-package com.maersk.mso139;
+package com.mso.service;
 
 import com.ibm.mq.*;
 import com.ibm.mq.constants.MQConstants;
+import com.mso.configuration.MqConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;

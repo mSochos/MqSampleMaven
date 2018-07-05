@@ -1,4 +1,4 @@
-package com.maersk.mso139;
+package com.mso.configuration;
 
 import com.ibm.mq.MQEnvironment;
 import com.ibm.mq.MQException;
